@@ -1,0 +1,11 @@
+POST http://localhost:8888/questack-api/user HTTP/1.1
+content-type: application/json
+authorization:
+
+{
+  "name": "youthke",
+  "mail": "test@test.com",
+  "password": "pass"
+}
+
+###
