@@ -31,6 +31,7 @@ func router() *gin.Engine{
 	api := r.Group("/questack-api")
 	api.POST("/user", ownerCtr.Create)
 	auth := api.Use(middleware.Auth())
+	auth.GET("/stacks", stackCtr.FindMine)
 	auth.POST("/stack", stackCtr.Create)
 	return r
 }

@@ -10,6 +10,7 @@ import (
 
 type StackController interface {
 	Create(ctx *gin.Context)
+	FindMine(ctx *gin.Context)
 }
 
 type stackController struct {
@@ -44,3 +45,21 @@ func(s *stackController)Create(ctx *gin.Context){
 		"message": "success",
 	})
 }
+
+func(s *stackController)FindMine(ctx *gin.Context){
+	id := uint(ctx.GetFloat64("id"))
+
+	stacks, err := s.StackService.FindALLByOwnerID(id)
+
+	if err != nil {
+		log.Println(err)
+		ctx.JSON(http.StatusInternalServerError, nil)
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"stacks": stacks,
+		"message": "success",
+	})
+}
+
+
