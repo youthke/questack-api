@@ -7,6 +7,7 @@ import (
 
 type StackService interface {
 	Create(name string, ownerID uint) error
+	FindALLByOwnerID(id uint)([]model.Stack,error)
 }
 
 type stackService struct {
@@ -24,3 +25,10 @@ func(s *stackService)Create(name string, ownerID uint) error{
 	}
 	return s.StackRepository.Create(stack)
 }
+
+
+func(s *stackService)FindALLByOwnerID(id uint) ([]model.Stack,error){
+	return s.StackRepository.FindAllByOwnerID(id)
+}
+
+
