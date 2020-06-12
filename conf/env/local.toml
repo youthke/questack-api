@@ -1,0 +1,4 @@
+[db]
+  user = "root"
+  password = "questack"
+  ip    = "localhost:3310"
