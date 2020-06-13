@@ -3,7 +3,7 @@ content-type: application/json
 authorization:
 
 {
-  "name": "youthke",
+  "name": "youthke2",
   "mail": "test@test.com",
   "password": "pass"
 }
@@ -12,20 +12,28 @@ authorization:
 
 POST http://localhost:8888/questack-api/stack HTTP/1.1
 content-type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE5Nzc1ODEsImlkIjoyfQ.BuUAgDmKOv1xnSNChJ6yMcxeBKFonZVwdYXz8uyf6Ek
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMjc0NjcsImlkIjo0fQ.nh9_eLLRFHeO-TtcesDs-YV8colGmXDyO-bvOgQ8RcA
 
 {
-  "name": "好きなおでん"
+  "name": "好きなおでん2"
 }
 
 ###
 
 GET http://localhost:8888/questack-api/stacks HTTP/1.1
 content-type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTE5Nzc1ODEsImlkIjoyfQ.BuUAgDmKOv1xnSNChJ6yMcxeBKFonZVwdYXz8uyf6Ek
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMjc0NjcsImlkIjo0fQ.nh9_eLLRFHeO-TtcesDs-YV8colGmXDyO-bvOgQ8RcA
+
+###
+
+POST http://localhost:8888/questack-api/stack/update HTTP/1.1
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMjc0NjcsImlkIjo0fQ.nh9_eLLRFHeO-TtcesDs-YV8colGmXDyO-bvOgQ8RcA
 
 {
-  "name": "好きなおでん"
+  "id": 2,
+  "name": "好きなおでん3"
 }
+
 
 ###
