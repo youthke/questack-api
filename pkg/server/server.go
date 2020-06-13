@@ -27,10 +27,12 @@ func router() *gin.Engine{
 
 	ownerCtr := ownerInjector()
 	stackCtr := stackInjector()
+	questionCtr := questionInjector()
 
 	api := r.Group("/questack-api")
 	api.POST("/sign-in", ownerCtr.SignIn)
 	api.POST("/user", ownerCtr.Create)
+	api.POST("/question/create",questionCtr.Create)
 	auth := api.Use(middleware.Auth())
 	auth.GET("/stacks", stackCtr.FindMine)
 	auth.POST("/stack", stackCtr.Create)
@@ -50,4 +52,12 @@ func stackInjector() controller.StackController{
 	stackRepository := repository.NewStackRepository(db)
 	stackService := service.NewStackService(stackRepository)
 	return controller.NewStackController(stackService)
+}
+
+func questionInjector() controller.QuestionController{
+	db := conf.GetDB()
+	questionRepository := repository.NewQuestionRepository(db)
+	stackRepository := repository.NewStackRepository(db)
+	questionService := service.NewQuestionService(questionRepository, stackRepository)
+	return controller.NewQuestionController(questionService)
 }

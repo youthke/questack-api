@@ -5,7 +5,7 @@ type Question struct {
 	Title string `json:"title"`
 	Author string `json:"author"`
 	Content string `json:"content"`
-	StackRefer uint
+	StackRefer uint `gorm:"column:stack_id"`
 }
 
 
