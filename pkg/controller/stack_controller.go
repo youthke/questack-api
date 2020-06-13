@@ -11,6 +11,7 @@ import (
 type StackController interface {
 	Create(ctx *gin.Context)
 	FindMine(ctx *gin.Context)
+	Update(ctx *gin.Context)
 }
 
 type stackController struct {
@@ -54,6 +55,7 @@ func(s *stackController)FindMine(ctx *gin.Context){
 	if err != nil {
 		log.Println(err)
 		ctx.JSON(http.StatusInternalServerError, nil)
+		return
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
@@ -62,4 +64,27 @@ func(s *stackController)FindMine(ctx *gin.Context){
 	})
 }
 
+func(s *stackController)Update(ctx *gin.Context){
+	ownerID:= uint(ctx.GetFloat64("id"))
 
+	var form presenter.StackUpdateForm
+
+	err := ctx.BindJSON(&form)
+
+	if err != nil {
+		log.Println(err)
+		ctx.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	err = s.StackService.Update(form.ID,form.Name,ownerID)
+
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "success",
+	})
+}

@@ -9,3 +9,7 @@ type Stack struct{
 }
 
 
+func (s *Stack)SetName(name string){
+	s.Name = name
+}
+

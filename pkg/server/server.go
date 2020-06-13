@@ -33,6 +33,7 @@ func router() *gin.Engine{
 	auth := api.Use(middleware.Auth())
 	auth.GET("/stacks", stackCtr.FindMine)
 	auth.POST("/stack", stackCtr.Create)
+	auth.POST("/stack/update", stackCtr.Update)
 	return r
 }
 
