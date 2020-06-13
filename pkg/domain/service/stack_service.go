@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/HazeyamaLab/questack-api/pkg/domain/model"
 	"github.com/HazeyamaLab/questack-api/pkg/repository"
+	"github.com/HazeyamaLab/questack-api/pkg/util"
 )
 
 type StackService interface {
@@ -21,9 +22,11 @@ func NewStackService(s repository.StackRepository) StackService{
 }
 
 func(s *stackService)Create(name string, ownerID uint) error{
+	url:= util.RandString()
 	stack := model.Stack{
 		Name:name,
 		OwnerRefer:ownerID,
+		URL:url,
 	}
 	return s.StackRepository.Create(stack)
 }

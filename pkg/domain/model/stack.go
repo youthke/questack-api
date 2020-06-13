@@ -5,6 +5,7 @@ type Stack struct{
 	Owner Owner `json:"owner"`
 	OwnerRefer uint `gorm:"column:owner_id"`
 	Name string `gorm:"name"`
+	URL string `json:"url"`
 	Questions []Question `gorm:"foreignkey:StackRefer" json:"questions"`
 }
 
