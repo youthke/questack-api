@@ -11,6 +11,7 @@ type StackService interface {
 	Create(name string, ownerID uint) error
 	FindALLByOwnerID(id uint)([]model.Stack,error)
 	Update(stackID uint, name string, ownerID uint) error
+	FindOneByURL(url string)(model.Stack, error)
 }
 
 type stackService struct {
@@ -34,6 +35,10 @@ func(s *stackService)Create(name string, ownerID uint) error{
 
 func(s *stackService)FindALLByOwnerID(id uint) ([]model.Stack,error){
 	return s.StackRepository.FindAllByOwnerID(id)
+}
+
+func (s *stackService)FindOneByURL(url string)(model.Stack, error){
+	return s.StackRepository.FindOneByURL(url)
 }
 
 func(s *stackService)Update(stackID uint, name string, ownerID uint) error{

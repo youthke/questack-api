@@ -30,6 +30,7 @@ func router() *gin.Engine{
 	questionCtr := questionInjector()
 
 	api := r.Group("/questack-api")
+	api.GET("/stacks/:token", stackCtr.FindOneByURL)
 	api.POST("/sign-in", ownerCtr.SignIn)
 	api.POST("/user", ownerCtr.Create)
 	api.POST("/question/create",questionCtr.Create)
