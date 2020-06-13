@@ -11,6 +11,7 @@ import (
 type StackController interface {
 	Create(ctx *gin.Context)
 	FindMine(ctx *gin.Context)
+	FindOneByURL(ctx *gin.Context)
 	Update(ctx *gin.Context)
 }
 
@@ -40,6 +41,7 @@ func(s *stackController)Create(ctx *gin.Context){
 	if err != nil {
 		log.Println(err)
 		ctx.JSON(http.StatusInternalServerError, nil)
+		return
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
@@ -63,6 +65,17 @@ func(s *stackController)FindMine(ctx *gin.Context){
 		"message": "success",
 	})
 }
+
+func(s *stackController)FindOneByURL(ctx *gin.Context){
+	url := ctx.Param("token")
+	stack, err := s.StackService.FindOneByURL(url)
+	if err != nil{
+		ctx.JSON(http.StatusNotFound, nil)
+		return
+	}
+	ctx.JSON(http.StatusOK, stack)
+}
+
 
 func(s *stackController)Update(ctx *gin.Context){
 	ownerID:= uint(ctx.GetFloat64("id"))

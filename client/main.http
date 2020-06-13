@@ -55,9 +55,16 @@ Authorization:
 
 {
   "stack_url": "yXXL61cqhb",
-  "title": "私はたこ焼きが好き2",
+  "title": "私はいか焼きが好き2",
   "author": "絶対匿名希望",
   "content": "aaaaaaaaaaa"
 }
 
 ###
+
+GET http://localhost:8888/questack-api/stacks/yXXL61cqhb HTTP/1.1
+content-type: application/json
+Authorization:
+
+###
+
