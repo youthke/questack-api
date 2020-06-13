@@ -6,3 +6,8 @@ type OwnerCreateForm struct {
 	Password string `json:"password"`
 }
 
+type OwnerSignInForm struct {
+	Mail string `json:"mail"`
+	Password string `json:"password"`
+}
+

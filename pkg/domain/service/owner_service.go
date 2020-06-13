@@ -9,6 +9,7 @@ import (
 
 type OwnerService interface {
 	Create(name string, mail string, password string) (uint,error)
+	SignIn(mail string, password string)(uint, error)
 }
 
 type ownerService struct {
@@ -37,4 +38,18 @@ func (o *ownerService) Create(name string, mail string, password string) (uint, 
 		Password: hash,
 	}
 	return o.ownerRepository.Create(owner)
+}
+
+
+func(o *ownerService) SignIn(mail string, password string) (uint, error){
+	owner, err := o.ownerRepository.FindOneByMail(mail)
+	if err != nil {
+		return 0, err
+	}
+	err = util.Compare(owner.Password, password)
+	if err != nil {
+		return 0, err
+	}
+
+	return owner.ID, nil
 }

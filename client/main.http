@@ -37,3 +37,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMjc0NjcsImlk
 
 
 ###
+
+POST http://localhost:8888/questack-api/sign-in HTTP/1.1
+content-type: application/json
+Authorization:
+
+{
+  "mail": "test@test.com",
+  "password": "pass"
+}
+
+###
