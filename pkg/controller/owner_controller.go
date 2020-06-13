@@ -11,6 +11,7 @@ import (
 
 type OwnerController interface {
 	Create(ctx *gin.Context)
+	SignIn(ctx *gin.Context)
 }
 
 type ownerController struct {
@@ -48,4 +49,32 @@ func (o *ownerController)Create(ctx *gin.Context){
 
 	ctx.JSON(http.StatusOK, gin.H{"message": "success", "Authorization": token})
 
+}
+
+func (o *ownerController)SignIn(ctx *gin.Context){
+	var form presenter.OwnerSignInForm
+	err := ctx.BindJSON(&form)
+	if err != nil{
+		log.Println(err)
+		ctx.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+	ownerID, err := o.ownerService.SignIn(form.Mail, form.Password)
+	if err != nil {
+		ctx.JSON(http.StatusUnauthorized, nil)
+		return
+	}
+
+	token, err := util.GenerateOwnerJwt(ownerID)
+
+	if err != nil {
+		log.Println(err)
+		ctx.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"token": token,
+	})
 }
