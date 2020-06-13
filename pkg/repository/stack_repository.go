@@ -10,6 +10,7 @@ type StackRepository interface {
 	FindAllByOwnerID(id uint)([]model.Stack, error)
 	FindOne(id uint)(model.Stack, error)
 	Update(stack model.Stack)error
+	ExistCheck(url string) (uint, error)
 }
 
 type stackRepository struct {
@@ -39,4 +40,13 @@ func(s *stackRepository)FindOne(id uint)(model.Stack, error){
 
 func(s *stackRepository)Update(stack model.Stack) error{
 	return s.db.Save(&stack).Error
+}
+
+func(s *stackRepository)ExistCheck(url string) (uint, error){
+	var stack model.Stack
+	err := s.db.First(&stack,"url=?",url).Error
+	if err != nil {
+		return 0, err
+	}
+	return stack.ID, nil
 }

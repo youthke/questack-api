@@ -43,8 +43,21 @@ content-type: application/json
 Authorization:
 
 {
-  "mail": "test@test.com",
+  "mail": "testaaa@test.com",
   "password": "pass"
+}
+
+###
+
+POST http://localhost:8888/questack-api/question/create HTTP/1.1
+content-type: application/json
+Authorization:
+
+{
+  "stack_url": "yXXL61cqhb",
+  "title": "私はたこ焼きが好き2",
+  "author": "絶対匿名希望",
+  "content": "aaaaaaaaaaa"
 }
 
 ###
