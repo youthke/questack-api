@@ -12,7 +12,7 @@ authorization:
 
 POST http://localhost:8888/questack-api/stack HTTP/1.1
 content-type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTIwMzc5ODcsImlkIjo2fQ.csTSf2tAtBSxyTaJB-3YyBbNQFpCFwzYatGaelresrQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTI1NzcwMTQsImlkIjoxfQ.13rnfuYOHRKthnzs3J7ifyeOiqQQDekS_1C46sZwaEY
 
 {
   "name": "好きなおでん22"
@@ -54,15 +54,15 @@ content-type: application/json
 Authorization:
 
 {
-  "stack_url": "yXXL61cqhb",
-  "title": "私はいか焼きが好き2",
+  "stack_url": "jagZPgDSnIj7PEW69hHJCZFpTeNHu6rVBVbZohGE",
+  "title": "私はいか焼きが好き23",
   "author": "絶対匿名希望",
   "content": "aaaaaaaaaaa"
 }
 
 ###
 
-GET http://localhost:8888/questack-api/stacks/yXXL61cqhb HTTP/1.1
+GET http://localhost:8888/questack-api/stacks/jagZPgDSnIj7PEW69hHJCZFpTeNHu6rVBVbZohGE HTTP/1.1
 content-type: application/json
 Authorization:
 

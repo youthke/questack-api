@@ -58,7 +58,6 @@ func stackInjector() controller.StackController{
 func questionInjector() controller.QuestionController{
 	db := conf.GetDB()
 	questionRepository := repository.NewQuestionRepository(db)
-	stackRepository := repository.NewStackRepository(db)
-	questionService := service.NewQuestionService(questionRepository, stackRepository)
+	questionService := service.NewQuestionService(questionRepository)
 	return controller.NewQuestionController(questionService)
 }

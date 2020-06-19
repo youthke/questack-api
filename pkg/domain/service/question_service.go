@@ -11,19 +11,15 @@ type QuestionService interface {
 
 type questionService struct{
 	repository.QuestionRepository
-	repository.StackRepository
 }
 
-func NewQuestionService(r repository.QuestionRepository, s repository.StackRepository) QuestionService{
-	return &questionService{r,s}
+func NewQuestionService(r repository.QuestionRepository) QuestionService{
+	return &questionService{r}
 }
 
 
-func (q *questionService)Create(stackURL string, title string, author string, content string) error{
-	stackID, err := q.StackRepository.ExistCheck(stackURL)
-	if err !=  nil{
-		return err
-	}
+func (q *questionService)Create(stackID string, title string, author string, content string) error{
+
 	question := model.Question{
 		Title:title,
 		Author:author,

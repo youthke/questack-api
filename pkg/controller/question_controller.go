@@ -31,7 +31,7 @@ func(q *questionController)Create(ctx *gin.Context){
 	err = q.QuestionService.Create(form.StackURL, form.Title, form.Author, form.Content)
 
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, nil)
+		ctx.JSON(http.StatusNotFound, nil)
 		return
 	}
 
