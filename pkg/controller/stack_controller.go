@@ -67,8 +67,8 @@ func(s *stackController)FindMine(ctx *gin.Context){
 }
 
 func(s *stackController)FindOneByURL(ctx *gin.Context){
-	url := ctx.Param("token")
-	stack, err := s.StackService.FindOneByURL(url)
+	id := ctx.Param("token")
+	stack, err := s.StackService.FindOneByID(id)
 	if err != nil{
 		ctx.JSON(http.StatusNotFound, nil)
 		return

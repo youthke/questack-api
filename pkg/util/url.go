@@ -12,7 +12,7 @@ const (
 	sliceLength = 6
 	mask = 1 << sliceLength - 1
 	indexMax = 63 / sliceLength
-	returnLength = 10
+	returnLength = 40
 )
 
 func RandString() string{

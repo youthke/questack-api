@@ -9,9 +9,8 @@ type StackRepository interface {
 	Create(stack model.Stack) error
 	FindAllByOwnerID(id uint)([]model.Stack, error)
 	FindOne(id uint)(model.Stack, error)
-	FindOneByURL(url string)(model.Stack, error)
+	FindOneByID(url string)(model.Stack, error)
 	Update(stack model.Stack)error
-	ExistCheck(url string) (uint, error)
 }
 
 type stackRepository struct {
@@ -24,7 +23,7 @@ func NewStackRepository(db *gorm.DB)StackRepository{
 
 
 func(s *stackRepository)Create(stack model.Stack) error{
-	return s.db.Debug().Create(&stack).Error
+	return s.db.Create(&stack).Error
 }
 
 func(s *stackRepository)FindAllByOwnerID(id uint)([]model.Stack, error){
@@ -43,17 +42,17 @@ func(s *stackRepository)Update(stack model.Stack) error{
 	return s.db.Save(&stack).Error
 }
 
-func(s *stackRepository)FindOneByURL(url string)(model.Stack ,error){
+func(s *stackRepository)FindOneByID(id string)(model.Stack ,error){
 	var stack model.Stack
-	err := s.db.Debug().Preload("Questions").First(&stack,"url=?",url).Error
+	err := s.db.Debug().Preload("Questions").First(&stack,"id=?",id).Error
 	return stack, err
 }
 
-func(s *stackRepository)ExistCheck(url string) (uint, error){
-	var stack model.Stack
-	err := s.db.First(&stack,"url=?",url).Error
-	if err != nil {
-		return 0, err
-	}
-	return stack.ID, nil
-}
+//func(s *stackRepository)ExistCheck(url string) (uint, error){
+//	var stack model.Stack
+//	err := s.db.First(&stack,"url=?",url).Error
+//	if err != nil {
+//		return 0, err
+//	}
+//	return stack.ID, nil
+//}
