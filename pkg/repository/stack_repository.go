@@ -28,7 +28,7 @@ func(s *stackRepository)Create(stack model.Stack) error{
 
 func(s *stackRepository)FindAllByOwnerID(id uint)([]model.Stack, error){
 	var stacks []model.Stack
-	err := s.db.First(&stacks,"owner_id=?", id).Error
+	err := s.db.Find(&stacks,"owner_id=?", id).Error
 	return stacks, err
 }
 

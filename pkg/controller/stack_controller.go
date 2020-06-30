@@ -73,7 +73,10 @@ func(s *stackController)FindOneByURL(ctx *gin.Context){
 		ctx.JSON(http.StatusNotFound, nil)
 		return
 	}
-	ctx.JSON(http.StatusOK, stack)
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "success",
+		"stack": stack,
+	})
 }
 
 

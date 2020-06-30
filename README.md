@@ -1,8 +1,26 @@
 # questack-api
 
+## 起動方法
+
+### mysqlの起動
+
+dbディレクトリにて
+
+```cmd
+docker-compose up -d
+```
+
+### serverの起動
+
+プロジェクトのルートディレクトリにて
+
+```cmd
+go run cmd/main.go
+```
+
 ## resources 
 
-### Question 
+### Question
 
 |name|type|description|
 |:---|:---|:---|
@@ -10,7 +28,6 @@
 |title|string||
 |author|string|questioner's name|
 |content|string|question body|
-
 
 ### Owner
 
@@ -22,15 +39,11 @@
 |description|string|presentation|
 |stacks|[]Stack|question boxes|
 
-
-
 ### Stack
 
 |name|type|description|
 |:---:|:---:|:---|
-|id|int|primary key|
+|id|string|primary key|
 |owner|Owner||
 |name|string||
 |questions|[]Question||
-
-
