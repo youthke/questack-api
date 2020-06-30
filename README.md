@@ -47,3 +47,6 @@ go run cmd/main.go
 |owner|Owner||
 |name|string||
 |questions|[]Question||
+
+### 注意点
+もしこれをサーバーにあげる場合jwtのkeyを複雑で誰にもわからない内緒な文字列に変更してください
