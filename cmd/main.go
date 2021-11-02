@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/HazeyamaLab/questack-api/conf"
-	"github.com/HazeyamaLab/questack-api/pkg/server"
+	"github.com/youthke/questack-api/conf"
+	"github.com/youthke/questack-api/pkg/server"
 )
 
 var (

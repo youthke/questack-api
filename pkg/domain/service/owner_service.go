@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/HazeyamaLab/questack-api/pkg/domain/model"
-	"github.com/HazeyamaLab/questack-api/pkg/repository"
-	"github.com/HazeyamaLab/questack-api/pkg/util"
+	"github.com/youthke/questack-api/pkg/domain/model"
+	"github.com/youthke/questack-api/pkg/repository"
+	"github.com/youthke/questack-api/pkg/util"
 	"log"
 )
 
