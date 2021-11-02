@@ -1,11 +1,11 @@
 package server
 
 import (
-	"github.com/HazeyamaLab/questack-api/conf"
-	"github.com/HazeyamaLab/questack-api/pkg/controller"
-	"github.com/HazeyamaLab/questack-api/pkg/domain/service"
-	"github.com/HazeyamaLab/questack-api/pkg/middleware"
-	"github.com/HazeyamaLab/questack-api/pkg/repository"
+	"github.com/youthke/questack-api/conf"
+	"github.com/youthke/questack-api/pkg/controller"
+	"github.com/youthke/questack-api/pkg/domain/service"
+	"github.com/youthke/questack-api/pkg/middleware"
+	"github.com/youthke/questack-api/pkg/repository"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )

@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"github.com/HazeyamaLab/questack-api/pkg/domain/service"
-	"github.com/HazeyamaLab/questack-api/pkg/presenter"
+	"github.com/youthke/questack-api/pkg/domain/service"
+	"github.com/youthke/questack-api/pkg/presenter"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"

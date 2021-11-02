@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/HazeyamaLab/questack-api/pkg/domain/model"
+	"github.com/youthke/questack-api/pkg/domain/model"
 	"github.com/jinzhu/gorm"
 )
 

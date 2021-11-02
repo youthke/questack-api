@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/HazeyamaLab/questack-api/pkg/util"
+	"github.com/youthke/questack-api/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
