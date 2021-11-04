@@ -1,6 +1,7 @@
 version: '2'
 services:
   questack_db:
+    platform: linux/x86_64
     image: mysql:5.7
     ports:
       - "3310:3306"
