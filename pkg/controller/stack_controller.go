@@ -24,7 +24,7 @@ func NewStackController(s service.StackService)StackController{
 }
 
 func(s *stackController)Create(ctx *gin.Context){
-	id := uint(ctx.GetFloat64("id"))
+	ownerId := uint(ctx.GetFloat64("id"))
 
 
 	var form presenter.StackCreateForm
@@ -36,7 +36,7 @@ func(s *stackController)Create(ctx *gin.Context){
 		return
 	}
 
-	err = s.StackService.Create(form.Name, uint(id))
+	err = s.StackService.Create(form.Name, form.Description, uint(ownerId))
 
 	if err != nil {
 		log.Println(err)
