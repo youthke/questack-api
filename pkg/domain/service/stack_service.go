@@ -8,7 +8,7 @@ import (
 )
 
 type StackService interface {
-	Create(name string, ownerID uint) error
+	Create(name string, description string, ownerID uint) error
 	FindALLByOwnerID(id uint)([]model.Stack,error)
 	Update(stackID uint, name string, ownerID uint) error
 	FindOneByID(id string)(model.Stack, error)
@@ -22,11 +22,12 @@ func NewStackService(s repository.StackRepository) StackService{
 	return &stackService{s}
 }
 
-func(s *stackService)Create(name string, ownerID uint) error{
+func(s *stackService)Create(name string, description string, ownerID uint) error{
 	id := util.RandString()
 	stack := model.Stack{
 		ID: id,
 		Name:name,
+		Description: description,
 		OwnerRefer:ownerID,
 	}
 	return s.StackRepository.Create(stack)
